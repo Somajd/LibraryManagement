@@ -1,0 +1,11 @@
+﻿@using LibraryManagement.ViewModel;
+@model IEnumerable<CatalogViewModel>
+<a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Catalog" asp-action="Create"> Create new Catalog</a>
+
+<div class="row">
+        @foreach (var catalog in Model)
+        {
+            @Html.Partial("CatalogPartial", catalog)
+
+        }
+</div>

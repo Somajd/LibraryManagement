@@ -1,0 +1,33 @@
+﻿@using LibraryManagement.ViewModel;
+@model CatalogViewModel
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="panel panel-primary">
+        <div>
+            
+        </div>
+        <div class="panel-heading">
+            <img src="/images/@Model.Catalog.Icon" height="50" width="50" />
+            @Model.Catalog.Name 
+        </div>
+        <div class="panel-body">
+            <p>@Model.Catalog.Description</p>
+            <div class="btn-group">
+                @if (Model.PipelineCount == 0)
+    {<a class="btn btn-default btn-sm" asp-area="" asp-controller="Pipeline" asp-action="Add" asp-route-id="@Model.Catalog.CatalogId">Add Pipelines</a>}
+else
+{ <a class="btn bt-info" asp-area="" asp-controller="Catalog" asp-action="List"></a>}
+                @if (Model.Catalog.PublishedStatus == LibraryManagement.Data.Model.ePublishedStatus.No)
+    {
+            <a class="btn btn-info btn-sm" asp-area="" asp-controller="Catalog" asp-action="Update" asp-route-id="@Model.Catalog.CatalogId">Edit</a>
+            <a class="btn btn-danger btn-sm" asp-area="" asp-controller="Catalog" asp-action="Delete" asp-route-id="@Model.Catalog.CatalogId">Delete</a>
+            <a class="btn btn-warning btn-sm" asp-area="" asp-controller="Catalog" asp-action="Publish" asp-route-id="@Model.Catalog.CatalogId">Publish</a>
+}
+else
+{
+            <a class="btn btn-success btn-sm" asp-area="" asp-controller="Order" asp-action="Create" asp-route-id="@Model.Catalog.CatalogId">Launch</a>
+}
+            </div>
+        </div>
+    </div>
+</div>

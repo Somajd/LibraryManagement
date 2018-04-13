@@ -1,0 +1,98 @@
+﻿@model LibraryManagement.ViewModel.PipelineViewModel
+
+@{
+    ViewData["Title"] = "View Catalog";
+}
+
+<h3>@Model.Catalog.Name</h3>
+
+<div>
+    
+    <hr />
+    <table>
+        <tr><td>
+            <dl class="dl-horizontal">
+                
+                <dt>
+                    @Html.DisplayNameFor(model => model.Catalog.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Catalog.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Catalog.Icon)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Catalog.Icon)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Catalog.PublishedStatus)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Catalog.PublishedStatus)
+                </dd>
+
+            </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form asp-controller="Pipeline" asp-action="Create" method="post" class="form-horizontal" role="form">
+
+                    @Html.HiddenFor(m => Model.Catalog.CatalogId)
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Jenkin Project
+                                </th>
+                                <th>
+                                    Jenkin Endpoint
+                                </th>
+                                <th>
+                                    SNOW Endpoint
+                                </th>
+
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input asp-for="Pipeline.JenkinsPipelineName" class="form-control" />
+                                    <span asp-validation-for="Pipeline.JenkinsPipelineName" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="Pipeline.JenkinsWebAPI" class="form-control" />
+                                    <span asp-validation-for="Pipeline.JenkinsWebAPI" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="Pipeline.ServiceNowWebAPI" class="form-control" />
+                                    <span asp-validation-for="Pipeline.ServiceNowWebAPI" class="text-danger"></span>
+                                </td>
+
+                                <td>
+                                    <input type="submit" value="Create" class="btn btn-success" />
+                                    <input class="btn btn-default" type="submit" value="Cancel" asp-controller="Catalog" asp-action="View" asp-route-id="@Model.Catalog.CatalogId" />
+
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+   
+</div>

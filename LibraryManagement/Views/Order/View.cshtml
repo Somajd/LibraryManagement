@@ -1,0 +1,56 @@
+﻿@model LibraryManagement.Data.Model.Order
+
+@{
+    ViewData["Title"] = "Order Detail View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Order [@Model.Catalog.Name/ @Model.OrderName]</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.OrderName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderName)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.JenkinsBuildNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JenkinsBuildNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JenkinsProjectName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JenkinsProjectName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JenkinsDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JenkinsDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JenkinsConsoleText)
+        </dt>
+        <dd>
+            @*@Html.DisplayFor(model => model.JenkinsConsoleText)*@
+            <textarea disabled="disabled" draggable="auto" class="text-muted text-primary" cols="150" rows="15">@Model.JenkinsConsoleText </textarea> 
+            
+         </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="View" asp-route-id="@Model.OrderId">Refresh</a> |
+    <a asp-action="List">Back to List</a>
+</div>

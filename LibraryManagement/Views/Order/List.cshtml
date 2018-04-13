@@ -1,0 +1,39 @@
+﻿@using LibraryManagement.Data.Model;
+@model IEnumerable<Order>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Catalog</th>
+            <th>Status</th>
+            <th>Edit Order</th>
+            <th>Delete Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var or in Model)
+        {
+        <tr>
+            <td>@or.OrderId</td>
+            <td>@or.OrderName</td>
+            @if (or.Catalog != null)
+            { <td>@or.Catalog.Name</td> }
+            else{<td>Empty</td>}
+            <td>@or.Status</td>
+            @if (or.Status == eOrderStatus.NotStarted)
+               {
+            <td ><a class="btn btn-info" asp-area="" asp-controller="Order" asp-action="ReLaunch" asp-route-id="@or.OrderId">ReLaunch</a></td>
+            <td><a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="Delete" asp-route-id="@or.OrderId">Delete</a></td>
+            }
+            else
+            { <td></td>
+            <td></td>}
+            <td><a class="btn btn-info" asp-area="" asp-controller="Order" asp-action="View" asp-route-id="@or.OrderId">Details</a></td>
+        </tr>
+
+        }
+    </tbody>
+</table>

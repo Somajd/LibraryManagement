@@ -1,0 +1,44 @@
+﻿@using LibraryManagement.ViewModel
+@model CatalogViewModel
+
+
+<h3>Update Catalog</h3>
+
+
+<div class="row OrderForm">
+    <div class="col-md-4">
+        <form asp-controller="Catalog" asp-action="Update" method="post" class="form-horizontal" role="form">
+            <div class="col-md-offset-2 small">Edit Catalog @Model.Catalog.Name</div>
+            @Html.HiddenFor(m => Model.Catalog.CatalogId)
+            <div class="form-group">
+                <label asp-for="Catalog.Name" class="control-label"></label>
+                <input asp-for="Catalog.Name" class="form-control" />
+                <span asp-validation-for="Catalog.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Catalog.Description" class="control-label"></label>
+                <input asp-for="Catalog.Description" class="form-control" />
+                <span asp-validation-for="Catalog.Description" class="text-danger"></span>xx
+            </div>
+            <div class="form-group">
+                <label asp-for="Catalog.Icon" class="control-label"></label>
+                <input asp-for="Catalog.Icon" class="form-control" />
+                <span asp-validation-for="Catalog.Icon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Catalog.PublishedStatus" class="control-label"></label>
+                <select asp-for="Catalog.PublishedStatus" class="form-control" asp-items="Model.PublishStatuses" ></select>
+                <span asp-validation-for="Catalog.PublishedStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="btn-group col-md-offset-2 col-md-6">
+                    <input class="btn btn-default" type="submit" value="Cancel" asp-controller="Catalog" asp-action="ListTile" />
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

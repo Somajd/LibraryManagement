@@ -1,0 +1,96 @@
+﻿@model LibraryManagement.Data.Model.Catalog
+
+@{
+    ViewData["Title"] = "View Catalog";
+}
+
+<h3>@Model.Name</h3>
+
+<div>
+    
+    <hr />
+    <table>
+        <tr><td>
+            <dl class="dl-horizontal">
+                
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Icon)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Icon)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PublishedStatus)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PublishedStatus)
+                </dd>
+
+            </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Jenkin Project
+                            </th>
+                            <th>
+                                Jenkin Endpoint
+                            </th>
+                            <th>
+                                SNOW Endpoint
+                            </th>
+
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Pipelines)
+            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PipelineId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JenkinsPipelineName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JenkinsWebAPI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceNowWebAPI)
+                            </td>
+
+                            <td>
+                                
+                                <a class="btn btn-danger"asp-controller="Pipeline"  asp-action="Delete" asp-route-id="@item.PipelineId">Delete</a>
+                            </td>
+                        </tr>
+}
+                    </tbody>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @if (Model.Pipelines.Count() ==0)
+    { 
+    <a class="btn btn-success" asp-controller="Pipeline" asp-action="Create" asp-route-id="@Model.CatalogId">Add New</a> 
+    }
+    <a class="btn btn-info"  asp-action="List">Back to Catalog List</a>
+</div>

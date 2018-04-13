@@ -1,0 +1,35 @@
+﻿@using LibraryManagement.ViewModel
+@model OrderViewModel
+
+
+@*<h2>Create Catalog</h2>*@
+
+
+<div class="row OrderForm">
+    <div class="col-md-4">
+        <form asp-controller="Order" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <h3 class="col-md-offset-2">Order Catalog : @Model.Catalog.Name</h3>
+            @Html.HiddenFor(m => Model.Catalog.CatalogId)
+            <div class="form-group">
+                <label asp-for="Order.OrderName" class="control-label"></label>
+                <input asp-for="Order.OrderName" class="form-control" />
+                <span asp-validation-for="Order.OrderName" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+                <label asp-for="Order.Catalog" class="control-label"></label>
+                <select asp-for="Catalog.Name" class="form-control"></select>
+                <span asp-validation-for="Catalog.Name" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <div class="btn-group col-md-offset-2 col-md-6">
+                    <input class="btn btn-default" type="submit" value="Cancel" asp-controller="Order" asp-action="=" List" />
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
